@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="logo.png">
+    <title>Westview PAWS - Hours</title>
+    <script src="https://kit.fontawesome.com/a268a10631.js" crossorigin="anonymous"></script>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+    .resize-animation-stopper * {
+      animation: none !important;
+      transition: none !important;
+    }
+    @font-face {
+      font-family: OpenSans;
+      src: url(OpenSans-Regular.ttf);
+    }
+    @font-face {
+      font-family: Merriweather;
+      src: url(Merriweather-Regular.ttf);
+    }
+    body {
+      padding: 0;
+      margin: 0 auto;
+      background: white;
+      font-family: serif;
+      box-sizing: border-box;
+      font-family: OpenSans, sans-serif;
+    }
+    /* navigation start */
+    nav { /* navigation bar */
+      z-index: 1;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 12vh;
+      padding: 0 25px;
+      transition: 0.5s ease;
+    }
+    .classfinal {
+      background-color: #262626;
+      min-height: 8vh;
+    }
+    .show {
+      background-color: transparent;
+    }
+    .logo { /* nav label on left */
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 20px;
+      font-family: Merriweather, serif;
+      transition: 0.5s ease;
+    }
+    .nav { /* collective links */
+      display: flex;
+      max-width: 600px;
+      width: 55vw;
+      justify-content: space-around;
+      padding-right: 50px;
+    }
+    .nav li {
+      list-style: none;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 3px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: OpenSans, sans-serif;
+    }
+    .nav a:hover {
+      color: #E4B374;
+    }
+    .burger {
+      display: none;
+      cursor: pointer;
+      padding-right: 50px;
+    }
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px;
+      transition: all 0.5s ease;
+    }
+    @media (max-width: 768px) { /* mobile start */
+      body {
+        overflow-x: hidden;
+      }
+      .nav {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background-color: #303030;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+      }
+      .nav li {
+        opacity: 0;
+      }
+      .burger {
+        display: block;
+      }
+    }
+    .nav-active {
+      transform: translateX(0%);
+    }
+    .navactive {
+      opacity: 0;
+    }
+    @keyframes navLinkFade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .toggle .line1 {
+      transform: rotate(-225deg) translate(5px, -6px);
+    }
+    .toggle .line2 {
+      opacity: 0;
+    }
+    .toggle .line3 {
+      transform: rotate(-135deg) translate(5px, 6px);
+    }
+    #sidenav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+      display: none;
+      transition: 0.5s ease;
+    }
+    .toggle #sidenav-overlay {
+      display: block;
+    } /* mobile end */
+    #imgcontainer { /* banner container */
+      background-image: linear-gradient(rgba(113, 62, 34, 0.5), rgba(71, 47, 31, 0.5)), url("hoursbanner.jpg");
+      background-position: center top;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+      padding: 150px 10%;
+      font-family: OpenSans, sans-serif;
+      text-align: center;
+    }
+    @media (min-width: 100px) {
+      #imgcontainer {
+        background-position: center 55%;
+      }
+    }
+    @media (max-width: 1050px) {
+      #imgcontainer {
+        background-size: cover;
+      }
+    }
+    #imgcontainer #header { /* title text */
+      color: white;
+      font-family: Merriweather, serif;
+      letter-spacing: 10px;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 1205px) {
+      #imgcontainer #header {
+        font-size: 6em;
+      }
+      #imgcontainer h2 {
+        font-size: 2vw;
+        color: white;
+      }
+    }
+    @media (max-width: 1204px) {
+      #imgcontainer #header {
+        font-size: 8vw;
+      }
+      #imgcontainer h2 {
+        font-size: 3vw;
+        color: white;
+      }
+    }
+    /* navigation end */
+    #container {
+      margin: 0 auto;
+      overflow: hidden;
+      background: white;
+      padding: 40px 20%;
+      text-align: center;
+    }
+    #container iframe {
+      width: 100%;
+      height: 500px;
+    }
+    #container a {
+      color: black;
+    }
+    #footer {
+      width: 90%;
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 5%;
+    }
+    #footer p {
+      margin: 0;
+    }
+    @media (max-width: 800px) {
+      #footer {
+        font-size: 2vw;
+      }
+    }
+    #footer div {
+      letter-spacing: 1px;
+    }
+    #footer a {
+      color: white;
+      transition: 0.5s ease;
+      text-decoration: none;
+    }
+    #footer a:hover {
+      color: #E4B374;
+      cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- navigation start -->
+    <nav class="classinitial">
+      <div class="logo">
+        <h4>Westview PAWS</h4>
+      </div>
+      <ul class="nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="hours.html">Hours</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div id="sidenav-overlay"></div>
+      </div>
+    </nav>
+    <div id="imgcontainer">
+      <div id="header">Volunteer Hours</div>
+      <h2>Check hours here.</h2>
+    </div>
+    <!-- navigation end -->
+    <div id="container">
+      <p><b>THERE IS NO CLUB FEE FOR THE 2020-2021 SCHOOL YEAR</b></p>
+      <p><s>Remember to pay your club fee of $15 to have your volunteer hours tracked.</s></p>
+      <p>It's a lot of work for our club leaders to keep track of every single person that comes to events! <s>If you do pay the fee,</s> you'll get your hours tracked and verified by us, and you can just easily print out your hours at the end of the year. While the fee isn't necessary to be in the club, you'll also get the PAWS t-shirt along with your volunteer hours being tracked.</p>
+      <p>If your hours are incorrect or you are unable to pay the fee due to financial issues, contact us and we'll be able to get you on the sheet or adjust your hours!</p>
+      <iframe jsname="L5Fo6c" jscontroller="usmiIb" jsaction="rcuQ6b:WYd;" class="YMEQtf L6cTce-purZT L6cTce-pSzOP KfXz0b" sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads" frameborder="0" aria-label="Spreadsheet, Hours 2020-2021" allowfullscreen="" src="https://docs.google.com/spreadsheets/d/1apq0RLaGo5fjGMRuVn6zxMUdE09_hWKNMkrIWEKOYeo/htmlembed?authuser=0"></iframe>
+      <p>Previous years:</p>
+      <a href="https://docs.google.com/spreadsheets/d/1-4kDPmrODsnRC9mdEcFNL_CumikRXvRGnsQQ05dEi64/edit?usp=sharing"><p>2019-2020</p></a>
+      <a href="https://docs.google.com/spreadsheets/d/1_MD_Ixqfl3a4SeRPO5gJSRqhWSJQO4S797LsaxdXKoA/edit?usp=sharing"><p>2018-2019</p></a>
+    </div>
+    <div id="footer">
+      <p>Designed by Evelyn Chen</p>
+      <a href="#imgcontainer"><i class="fas fa-chevron-up"></i></a>
+      <div>
+        <a href="https://instagram.com/westviewpaws" target="_blank"><i class="fab fa-instagram"></i>&nbsp;westviewpaws</a>&nbsp;&nbsp;
+        <a href="mailto:westviewpaws@gmail.com" target="_blank"><i class="far fa-envelope"></i>&nbsp;westviewpaws@gmail.com</a>
+      </div>
+    <script>
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav');
+      const nav2 = document.querySelector('nav');
+      const logo = document.querySelector('.logo');
+      const navLinks = document.querySelectorAll('.nav li')
+
+      burger.addEventListener('click', () => {
+
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+        logo.classList.toggle('navactive');
+        nav2.classList.toggle('show');
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index);
+          if (link.style.animation) {
+            link.style.animation = ''
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+          }
+        });
+
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      document.body.classList.add("resize-animation-stopper");
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document.body.classList.remove("resize-animation-stopper");
+      }, 400);
+    });
+
+
+    function myFunction() {
+      alert("Thank you for signing up! You will receive meeting details shortly.");
+    }
+    </script>
+    <script>
+        $(function () {
+            var header = $(".classinitial");
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 5) {
+                    header.removeClass('classinitial')
+                            .addClass("classfinal");
+                } else {
+                    header.removeClass("classfinal")
+                            .addClass('classinitial');
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

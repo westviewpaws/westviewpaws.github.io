@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="logo.png">
+    <title>Westview PAWS - Blog</title>
+    <script src="https://kit.fontawesome.com/a268a10631.js" crossorigin="anonymous"></script>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+    .resize-animation-stopper * {
+      animation: none !important;
+      transition: none !important;
+    }
+    @font-face {
+      font-family: OpenSans;
+      src: url(OpenSans-Regular.ttf);
+    }
+    @font-face {
+      font-family: Merriweather;
+      src: url(Merriweather-Regular.ttf);
+    }
+    body {
+      padding: 0;
+      margin: 0 auto;
+      background: white;
+      font-family: serif;
+      box-sizing: border-box;
+      font-family: OpenSans, sans-serif;
+    }
+    /* navigation start */
+    nav { /* navigation bar */
+      z-index: 1;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 12vh;
+      padding: 0 25px;
+      transition: 0.5s ease;
+    }
+    .classfinal {
+      background-color: #262626;
+      min-height: 8vh;
+    }
+    .show {
+      background-color: transparent;
+    }
+    .logo { /* nav label on left */
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 20px;
+      font-family: Merriweather, serif;
+      transition: 0.5s ease;
+    }
+    .nav { /* collective links */
+      display: flex;
+      max-width: 600px;
+      width: 55vw;
+      justify-content: space-around;
+      padding-right: 50px;
+    }
+    .nav li {
+      list-style: none;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 3px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: OpenSans, sans-serif;
+    }
+    .nav a:hover {
+      color: #E4B374;
+    }
+    .burger {
+      display: none;
+      cursor: pointer;
+      padding-right: 50px;
+    }
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px;
+      transition: all 0.5s ease;
+    }
+    @media (max-width: 768px) { /* mobile start */
+      body {
+        overflow-x: hidden;
+      }
+      .nav {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background-color: #303030;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+      }
+      .nav li {
+        opacity: 0;
+      }
+      .burger {
+        display: block;
+      }
+    }
+    .nav-active {
+      transform: translateX(0%);
+    }
+    .navactive {
+      opacity: 0;
+    }
+    @keyframes navLinkFade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .toggle .line1 {
+      transform: rotate(-225deg) translate(5px, -6px);
+    }
+    .toggle .line2 {
+      opacity: 0;
+    }
+    .toggle .line3 {
+      transform: rotate(-135deg) translate(5px, 6px);
+    }
+    #sidenav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+      display: none;
+      transition: 0.5s ease;
+    }
+    .toggle #sidenav-overlay {
+      display: block;
+    } /* mobile end */
+    #imgcontainer { /* banner container */
+      background-image: linear-gradient(rgba(113, 62, 34, 0.5), rgba(71, 47, 31, 0.5)), url("aboutbanner.jpg");
+      background-position: center top;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+      padding: 150px 10%;
+      font-family: OpenSans, sans-serif;
+      text-align: center;
+    }
+    @media (max-width: 1050px) {
+      #imgcontainer {
+        background-size: cover;
+      }
+    }
+    #imgcontainer #header { /* title text */
+      color: white;
+      font-family: Merriweather, serif;
+      letter-spacing: 10px;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 1205px) {
+      #imgcontainer #header {
+        font-size: 6em;
+      }
+      #imgcontainer h2 {
+        font-size: 2vw;
+        color: white;
+      }
+    }
+    @media (max-width: 1204px) {
+      #imgcontainer #header {
+        font-size: 8vw;
+      }
+      #imgcontainer h2 {
+        font-size: 3vw;
+        color: white;
+      }
+    }
+    /* navigation end */
+    #container {
+      min-height: 100vh;
+    }
+    #currentblog {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+      overflow: hidden;
+      transition: 0.2s ease-out;
+      margin-bottom: 70px;
+    }
+    #currentblog h4 {
+      text-align: center;
+      font-family: Merriweather;
+      font-size: 5em;
+      color: #3D292D;
+    }
+    .collapsible {
+      background-color: #BB7654;
+      color: white;
+      cursor: pointer;
+      padding: 18px 5%;
+      width: 60%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 30px;
+      font-family: MerriWeather;
+      margin: 0 20%;
+    }
+    .active, .collapsible:hover {
+      background-color: #865544;
+    }
+    .collapsible:after {
+      content: '\002B';
+      color: white;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .active:after {
+      content: "\2212";
+    }
+    .content {
+      width: 50%;
+      margin: 0 auto;
+      padding: 0 5%;
+      max-height: 0;
+      overflow: hidden;
+      transition: 0.2s ease-out;
+      background-color: #F9F8F7;
+    }
+    h2 {
+      margin: 0;
+      font-size: 2em;
+      color: #BB7654;
+    }
+    p {
+      font-size: 1.3em;
+      line-height: 1.25em;
+      color: #3D2923;
+      font-weight: normal;
+    }
+    hr {
+      margin: 40px;
+      border: 0;
+      background: white;
+      height: 1px;
+    }
+    #footer {
+      margin-top: 70px;
+      width: 90%;
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 5%;
+    }
+    #footer p {
+      margin: 0;
+    }
+    @media (max-width: 800px) {
+      #footer {
+        font-size: 2vw;
+      }
+    }
+    #footer div {
+      letter-spacing: 1px;
+    }
+    #footer a {
+      color: white;
+      transition: 0.5s ease;
+      text-decoration: none;
+    }
+    #footer a:hover {
+      color: #E4B374;
+      cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- navigation start -->
+    <nav class="classinitial">
+      <div class="logo">
+        <h4>Westview PAWS</h4>
+      </div>
+      <ul class="nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="hours.html">Hours</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div id="sidenav-overlay"></div>
+      </div>
+    </nav>
+    <div id="imgcontainer">
+      <div id="header">What's poppin' at PAWS?</div>
+      <h2>Recaps of important meetings in case you miss out.</h2>
+    </div>
+    <!-- navigation end -->
+    <div id="container">
+      <div id="currentblog">
+          <h4>2020-2021</h4>
+        <h2>December 2020</h2>
+        <h3>12/14/2020</h3>
+        <p>
+          Hey y'all! Today we had a quick check in with our group leaders over current projects. Please contact us if you still do not know your group! Fleece blanket drop-offs are this Saturday and Sunday from 3 - 4pm at Westview. We will not have another meeting until after Winter Break, so we wish everyone a happy and safe holiday break!
+        </p>
+        <h2>November 2020</h2>
+        <h3>11/30/2020</h3>
+        <p>
+          Greetings! In today's meeting, we split into groups and started working on the various volunteer opportunities. If you missed today's meeting or don't know what group you're in, feel free to email us and we'll get you caught up! Fleece pickup is this weekend, 12/5 and 12/6 from 3 - 4pm at Westview. Our next meeting will be 12/14, don't forget to sign up for Amazon Smiles to support Indigo Rescue, and we'll see y'all soon!
+        </p>
+        <h3>11/16/2020</h3>
+        <p>
+          Hello everybody! Today, we briefly went over cat grass drop off and new volunteer opportunities - Amazon Smiles, Indigo Rescue Instagram and posters, PAWS Instagram posts, and sticker designs. Our next meeting will be 11/30, which will count for volunteer hours!
+        </p>
+        <h3>11/2/2020</h3>
+        <p>
+          Thanks to everyone who showed up to our first meeting of the school year! We went over what PAWS does as a club, introduced the board members, and announced our first project: growing cat grass! More information coming soon in an email. Our next meeting will be 11/16, in two weeks. See y'all then!
+        </p>
+        <h2>September 2020</h2>
+        <h3>9/16/2020</h3>
+        <p>
+          Hey y'all! In the midst of these confusing times, we want to be able to meet and connect with you, as hard as it is! We'll be starting up meetings online again shortly, and we hope to see you there!
+        </p>
+      </div>
+      <button type="button" class="collapsible">2019-2020</button>
+      <div class="content">
+        <br>
+        <h2>January 2020</h2>
+        <h3>1/6/2020</h3>
+        <p>
+          Hey Paw Patrollers! ╰(*°▽°*)╯It was great seeing you all back from winter break, and without a scratch. 🐱‍👤 We decided to take it slow and resume our normal routine of cat scratchers and the pause tables. Be sure to come next week, where Audrey will be present and you'll all get to see her wonderful smile! ( •̀ ω •́ )✧
+        </p>
+        <h2>December 2019</h2>
+        <h3>12/16/19</h3>
+        <p>
+          This week we made blankets, felt courtesy the wonderful Audrey Zhao. After we finished, we continued making cat scratchers and blasted some Michael Buble since this was the last meeting before winter break. The wokshop group contined making PAWS tables. We hope you have a hoppy holiday! 🐇
+        </p>
+        <h3>12/9/19</h3>
+        <p>
+          We continued making our cat scratchers and PAWS tables, but it's not too late to join! You can hop in and help out anytime. 🐰 Please remember to pay your club fee! We haven't set a deadline for the last meeting you can pay, but when we come back from winter break, we'll have a date set in stone. Check out the tab 'Volunteer Hours' at the top of the page for more information! We'll see you next week for another great meeting! 🐹
+        </p>
+        <h2>November 2019</h2>
+        <h3>11/18/19</h3>
+        <p>
+          This meeting we planned to paint our pause tables- Thank you very meowch to the workshop team for helping us put that together! Unfortunately, we were unable to pick up the the sealant from Bonnie L Hayes during the weeks before, so we'll have to shelve that for another week! Instead, we had everyone who hadn't taken a safety test yet take one so they could work in the workshop when necessary. Don't worry, you can take one next meeting! After safety tests were done, everyone just chilled, or helped out on cat scratchers. We'll keep on keeping on next monday, and be painting as well!
+        </p>
+        <h3>11/4/19</h3>
+        <p>
+          We continued to make cat scratchers, and me-wow, are they coming along fantastic! 🐱 We estimate that they'll be done next meeting- so come on along to help us finish them! Here's your reminder that we'll be meeting on the 18th next, not the 11th, as we have the day off. Once again, don't forget your club fee. Although we'll still accept them later in the year, our t-shirt designs are almost done and we want to get t-shirts out to students sometime in January!
+        </p>
+        <h2>October 2019</h2>
+        <h3>10/28/19</h3>
+        <p>
+          This meeting we made cat scratchers! 🐈 If you paid your fee, you have an hour added to your volunteer time already! Don't forget- it's $15, and when you pay, you'll be able to view your volunteer hours! Please contact us if you are unable to pay the fee due to financial difficulties- we can work something out. We'll continue making cat scratchers next week, so come on over to help us out! 🐳
+        </p>
+        <h3>10/21/19</h3>
+        <p>
+          Today was our very first meeting of the year! 🐶 We covered exactly what we'll be doing this year in this slideshow, and followed it up with a fun kahoot! Congrats to marinara- I mean, Mariana- on winning first place and getting a fantastic duck soap! 🐥 We also created an updated email list with the people who want to regularly show up. Contact us to be added to the list! Next meeting we'll be making cat scratchers, so bring shoeboxes, hot glue guns, and scissors if you can. A fun cattitude is required! 🐱
+        </p>
+        <br>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Designed by Evelyn Chen</p>
+      <a href="#imgcontainer"><i class="fas fa-chevron-up"></i></a>
+      <div>
+        <a href="https://instagram.com/westviewpaws" target="_blank"><i class="fab fa-instagram"></i>&nbsp;westviewpaws</a>&nbsp;&nbsp;
+        <a href="mailto:westviewpaws@gmail.com" target="_blank"><i class="far fa-envelope"></i>&nbsp;westviewpaws@gmail.com</a>
+      </div>
+    </div>
+    <script>
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav');
+      const nav2 = document.querySelector('nav');
+      const logo = document.querySelector('.logo');
+      const navLinks = document.querySelectorAll('.nav li')
+
+      burger.addEventListener('click', () => {
+
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+        logo.classList.toggle('navactive');
+        nav2.classList.toggle('show');
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index);
+          if (link.style.animation) {
+            link.style.animation = ''
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+          }
+        });
+
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      document.body.classList.add("resize-animation-stopper");
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document.body.classList.remove("resize-animation-stopper");
+      }, 400);
+    });
+
+    //collapsible
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+    </script>
+    <script>
+        $(function () {
+            var header = $(".classinitial");
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 5) {
+                    header.removeClass('classinitial')
+                            .addClass("classfinal");
+                } else {
+                    header.removeClass("classfinal")
+                            .addClass('classinitial');
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

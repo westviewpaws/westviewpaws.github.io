@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="logo.png">
+    <title>Westview PAWS - Events</title>
+    <script src="https://kit.fontawesome.com/a268a10631.js" crossorigin="anonymous"></script>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+    .resize-animation-stopper * {
+      animation: none !important;
+      transition: none !important;
+    }
+    @font-face {
+      font-family: OpenSans;
+      src: url(OpenSans-Regular.ttf);
+    }
+    @font-face {
+      font-family: Merriweather;
+      src: url(Merriweather-Regular.ttf);
+    }
+    body {
+      padding: 0;
+      margin: 0 auto;
+      background: white;
+      font-family: serif;
+      box-sizing: border-box;
+      font-family: OpenSans, sans-serif;
+    }
+    /* navigation start */
+    nav { /* navigation bar */
+      z-index: 1;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 12vh;
+      padding: 0 25px;
+      transition: 0.5s ease;
+    }
+    .classfinal {
+      background-color: #262626;
+      min-height: 8vh;
+    }
+    .show {
+      background-color: transparent;
+    }
+    .logo { /* nav label on left */
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 20px;
+      font-family: Merriweather, serif;
+      transition: 0.5s ease;
+    }
+    .nav { /* collective links */
+      display: flex;
+      max-width: 600px;
+      width: 55vw;
+      justify-content: space-around;
+      padding-right: 50px;
+    }
+    .nav li {
+      list-style: none;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 3px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: OpenSans, sans-serif;
+    }
+    .nav a:hover {
+      color: #E4B374;
+    }
+    .burger {
+      display: none;
+      cursor: pointer;
+      padding-right: 50px;
+    }
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px;
+      transition: all 0.5s ease;
+    }
+    @media (max-width: 768px) { /* mobile start */
+      body {
+        overflow-x: hidden;
+      }
+      .nav {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background-color: #303030;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+      }
+      .nav li {
+        opacity: 0;
+      }
+      .burger {
+        display: block;
+      }
+    }
+    .nav-active {
+      transform: translateX(0%);
+    }
+    .navactive {
+      opacity: 0;
+    }
+    @keyframes navLinkFade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .toggle .line1 {
+      transform: rotate(-225deg) translate(5px, -6px);
+    }
+    .toggle .line2 {
+      opacity: 0;
+    }
+    .toggle .line3 {
+      transform: rotate(-135deg) translate(5px, 6px);
+    }
+    #sidenav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+      display: none;
+      transition: 0.5s ease;
+    }
+    .toggle #sidenav-overlay {
+      display: block;
+    } /* mobile end */
+    #imgcontainer { /* banner container */
+      background-image: linear-gradient(rgba(113, 62, 34, 0.5), rgba(71, 47, 31, 0.5)), url("submitanideabanner.jpg");
+      background-position: center top;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      overflow: hidden;
+      padding: 150px 10%;
+      font-family: OpenSans, sans-serif;
+      text-align: center;
+    }
+    @media (min-width: 100px) {
+      #imgcontainer {
+        background-position: center 35%;
+      }
+    }
+    @media (max-width: 1050px) {
+      #imgcontainer {
+        background-size: cover;
+      }
+    }
+    #imgcontainer #header { /* title text */
+      color: white;
+      font-family: Merriweather, serif;
+      letter-spacing: 10px;
+      margin-bottom: 30px;
+    }
+    @media (min-width: 1205px) {
+      #imgcontainer #header {
+        font-size: 6em;
+      }
+      #imgcontainer h2 {
+        font-size: 2vw;
+        color: white;
+      }
+    }
+    @media (max-width: 1204px) {
+      #imgcontainer #header {
+        font-size: 8vw;
+      }
+      #imgcontainer h2 {
+        font-size: 3vw;
+        color: white;
+      }
+    }
+    /* navigation end */
+    #container {
+      margin: 0 auto;
+      overflow: hidden;
+      background: white;
+      padding: 40px 50px;
+      display: flex;
+      justify-content: center;
+    }
+    #main {
+      width: 55%;
+      margin-right: 10%;
+    }
+    #main div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      #main div {
+        flex-direction: column;
+      }
+      #main .pic1 {
+        display: none;
+      }
+    }
+    #main .pic1 {
+      margin-left: 10%;
+      max-width: 200px;
+      width: 40%;
+    }
+    #main .pic2 {
+      margin-right: 10%;
+      max-width: 320px;
+      width: 60%;
+    }
+    #main h2 {
+      font-size: 2em;
+      color: #BB7654;
+      font-family: Merriweather;
+      text-align: center;
+    }
+    #main p {
+      font-size: 1.3em;
+      line-height: 1.25em;
+      color: #3D2923;
+    }
+    #right_side {
+      width: 35%;
+      max-width: 400px;
+      background: #F9F8F7;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    #right_side h3 {
+      font-size: 1.5em;
+      text-align: center;
+      margin-bottom: 15px;
+      color: #3D2923;
+    }
+    #right_side ul {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      list-style: none;
+    }
+    #right_side a {
+      text-decoration: none;
+      color: #BB7654;
+      padding: 20px 30px;
+      display: block;
+      font-size: 1.3em;
+    }
+    @media (max-width: 768px) {
+      #right_side h3 {
+        padding: 10% 10%;
+        font-size: 3.5vw;
+      }
+      #right_side a {
+        padding: 10% 12%;
+        font-size: 2.8vw;
+      }
+    }
+    #right_side a:hover {
+      color: #F9F8F7;
+      background-color: #BB7654;
+    }
+    #formdiv {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+    #formdiv h4 {
+      font-family: Merriweather;
+      text-align: center;
+      color: #BB7654;
+      font-size: 2.5em;
+      margin-bottom: 0;
+    }
+    #formdiv p {
+      font-size: 1.2em;
+      color: #3D2923;
+    }
+    #formdiv label {
+      color: #3D2923;
+      font-family: OpenSans;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: OpenSans;
+    }
+    input[type=submit] {
+      width: 100%;
+      background-color: #865544;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: 0.5s ease;
+    }
+    input[type=submit]:hover {
+      background-color: #E4B374;
+    }
+    #footer {
+      margin-top: 60px;
+      width: 90%;
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 5%;
+    }
+    #footer p {
+      margin: 0;
+    }
+    @media (max-width: 800px) {
+      #footer {
+        font-size: 2vw;
+      }
+    }
+    #footer div {
+      letter-spacing: 1px;
+    }
+    #footer a {
+      color: white;
+      transition: 0.5s ease;
+      text-decoration: none;
+    }
+    #footer a:hover {
+      color: #E4B374;
+      cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- navigation start -->
+    <nav class="classinitial">
+      <div class="logo">
+        <h4>Westview PAWS</h4>
+      </div>
+      <ul class="nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="hours.html">Hours</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div id="sidenav-overlay"></div>
+      </div>
+    </nav>
+    <div id="imgcontainer">
+      <div id="header">Events</div>
+      <h2>Cool volunteer things we're doing. You can submit an idea here as well!</h2>
+    </div>
+    <!-- navigation end -->
+    <div id="container">
+      <div id="main">
+        <h2>We're always looking for new events to plan!</h2>
+        <div>
+          <p>Got a sick idea? You can make it happen! The club is constantly coming up with new things to do, and we want to hear your ideas!</p>
+          <img src="events1.png" class="pic1">
+        </div>
+        <div>
+          <img src="events2.jpg" class="pic2">
+          <p>Some previous events we've gone to are jewelry sales organized by shelters and dog washes! We've also made blankets, dog treats, cat scratchers, and sandwich boards for various organizations! </p>
+        </div>
+      </div>
+      <div id="right_side">
+        <h3>Ongoing Events</h3>
+        <ul>
+          <li><a href="https://docs.google.com/document/d/1V9nS3JFQiDCWjGWhF7YktCNXfVyD5EJIZf6YlCIXJcQ/edit?usp=sharing" target="_blank">Indigo Rescue Instagram</a></li>
+          <li><a href="https://docs.google.com/document/d/1INmhljHsiKeR-E-ShRyDOmuxI_GjnZc0HqQEtu6PlC4/edit?usp=sharing" target="_blank">Indigo Rescue Posters</a></li>
+          <li><a href="https://docs.google.com/document/d/1gGFhhr_4VKnAsJZCACMyqH4LsTI6Yi3AL9SMV-0R85M/edit?usp=sharing" target="_blank">Westview PAWS Instagram</a></li>
+          <li><a href="https://docs.google.com/document/d/1zvjhxBQbl575LtcVu8BPpdkO2hiter4JomqdiCmEp_Q/edit?usp=sharing" target="_blank">RedBubble Stickers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="formdiv">
+      <h4>Submit an Idea</h4>
+      <p> We want to hear your next big idea! Please don't overuse this, and please put some thought into your ideas before submitting them! There are a lot of things we could possibly do, but many just aren't feasible for the club to actually do. Some ideas could be possible volunteering events, activities we could do as a club,  or items we could make for shelters. Thank you! :)</P>
+      <form action="" method="POST" id="mG61Hd">
+        <label>Name</label>
+        <input name="name" type="text" class="form-control" placeholder="Your name.. (first and last)" required><br>
+        <label>Grade</label>
+        <input name="grade" type="number"  min="9" max="12" class="form-control" placeholder="Your grade.. (number only!)" required><br>
+        <label>Project Idea</label>
+        <textarea name="idea" class="form-control" placeholder="What is your idea? Feel free to make the answer as long or short as you want, so long as we can tell what you mean." rows="4" required></textarea><br>
+        <label>Estimated Project Cost</label>
+        <input name="cost" type="text" class="form-control" placeholder="What is the estimated cost of your idea?" required><br>
+        <label>Details</label>
+        <textarea name="details" class="form-control" placeholder="Tell us about your idea! Where will it be held, and what time will it take place? Is there a specific day this must be held? How does this account for the pandemic? If there are issues that arise due to necessary in-person contact, list that here and we can try to work it out!" rows="4" required></textarea><br>
+        <label>Other</label>
+        <textarea name="other" class="form-control" placeholder="If there's any additional information you have that needs to be said, write it here! Don't be shy, we would rather you say this here than only in person!" rows="4"></textarea><br>
+        <input type="submit" class="form-control submit" value="SUBMIT">
+      </form>
+    </div>
+    <div id="footer">
+      <p>Designed by Evelyn Chen</p>
+      <a href="#imgcontainer"><i class="fas fa-chevron-up"></i></a>
+      <div>
+        <a href="https://instagram.com/westviewpaws" target="_blank"><i class="fab fa-instagram"></i>&nbsp;westviewpaws</a>&nbsp;&nbsp;
+        <a href="mailto:westviewpaws@gmail.com" target="_blank"><i class="far fa-envelope"></i>&nbsp;westviewpaws@gmail.com</a>
+      </div>
+    <script>
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav');
+      const nav2 = document.querySelector('nav');
+      const logo = document.querySelector('.logo');
+      const navLinks = document.querySelectorAll('.nav li')
+
+      burger.addEventListener('click', () => {
+
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+        logo.classList.toggle('navactive');
+        nav2.classList.toggle('show');
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index);
+          if (link.style.animation) {
+            link.style.animation = ''
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+          }
+        });
+
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      document.body.classList.add("resize-animation-stopper");
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document.body.classList.remove("resize-animation-stopper");
+      }, 400);
+    });
+
+
+    function myFunction() {
+      alert("Thank you for signing up! You will receive meeting details shortly.");
+    }
+    </script>
+    <script>
+        $(function () {
+            var header = $(".classinitial");
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 5) {
+                    header.removeClass('classinitial')
+                            .addClass("classfinal");
+                } else {
+                    header.removeClass("classfinal")
+                            .addClass('classinitial');
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
