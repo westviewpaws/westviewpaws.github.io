@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="logo.png">
+    <title>Westview PAWS - Home</title>
+    <script src="https://kit.fontawesome.com/a268a10631.js" crossorigin="anonymous"></script>
+    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style type="text/css">
+    html {
+      scroll-behavior: smooth;
+    }
+    .resize-animation-stopper * {
+      animation: none !important;
+      transition: none !important;
+    }
+    @font-face {
+      font-family: OpenSans;
+      src: url(OpenSans-Regular.ttf);
+    }
+    @font-face {
+      font-family: Merriweather;
+      src: url(Merriweather-Regular.ttf);
+    }
+    body {
+      padding: 0;
+      margin: 0 auto;
+      background: white;
+      font-family: serif;
+      box-sizing: border-box;
+      font-family: OpenSans, sans-serif;
+    }
+    /* navigation start */
+    nav { /* navigation bar */
+      z-index: 1;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 12vh;
+      padding: 0 25px;
+      transition: 0.5s ease;
+    }
+    .classfinal {
+      background-color: #262626;
+      min-height: 8vh;
+    }
+    .show {
+      background-color: transparent;
+    }
+    .logo { /* nav label on left */
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 20px;
+      font-family: Merriweather, serif;
+      transition: 0.5s ease;
+    }
+    .nav { /* collective links */
+      display: flex;
+      max-width: 600px;
+      width: 55vw;
+      justify-content: space-around;
+      padding-right: 50px;
+    }
+    .nav li {
+      list-style: none;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      letter-spacing: 3px;
+      font-weight: bold;
+      font-size: 14px;
+      font-family: OpenSans, sans-serif;
+    }
+    .nav a:hover {
+      color: #E4B374;
+    }
+    .burger {
+      display: none;
+      cursor: pointer;
+      padding-right: 50px;
+    }
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 5px;
+      transition: all 0.5s ease;
+    }
+    @media (max-width: 768px) { /* mobile start */
+      body {
+        overflow-x: hidden;
+      }
+      .nav {
+        position: absolute;
+        right: 0px;
+        height: 100vh;
+        top: 0;
+        background-color: #303030;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+      }
+      .nav li {
+        opacity: 0;
+      }
+      .burger {
+        display: block;
+      }
+    }
+    .nav-active {
+      transform: translateX(0%);
+    }
+    .navactive {
+      opacity: 0;
+    }
+    @keyframes navLinkFade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .toggle .line1 {
+      transform: rotate(-225deg) translate(5px, -6px);
+    }
+    .toggle .line2 {
+      opacity: 0;
+    }
+    .toggle .line3 {
+      transform: rotate(-135deg) translate(5px, 6px);
+    }
+    #sidenav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+      display: none;
+      transition: 0.5s ease;
+    }
+    .toggle #sidenav-overlay {
+      display: block;
+    } /* mobile end */
+    #imgcontainer { /* banner container */
+      background-image: linear-gradient(rgba(113, 62, 34, 0.5), rgba(71, 47, 31, 0.5)), url("breadbanner.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      overflow: hidden;
+      padding: 15%;
+      font-family: OpenSans, sans-serif;
+    }
+    #imgcontainer #header { /* title text */
+      color: white;
+      font-family: Merriweather, serif;
+      letter-spacing: 10px;
+    }
+    @media (min-width: 1201px) {
+      #imgcontainer #header {
+        font-size: 6em;
+      }
+    }
+    @media (max-width: 1200px) {
+      #imgcontainer #header {
+        font-size: 9vw;
+      }
+    }
+    #imgcontainer h2 {
+      font-size: 2em;
+      color: white;
+    }
+    #imgcontainer button {
+      margin-top: 30px;
+      padding: 20px 40px;
+      background: transparent;
+      border: 2px solid white;
+      font-size: 1.5em;
+      color: white;
+      border-radius: 5px;
+      letter-spacing: 2px;
+      transition: 0.5s ease;
+    }
+    #imgcontainer button:hover {
+      cursor: pointer;
+      background: #3D292D;
+      border: 2px solid #3D292D;
+    }
+    /* navigation end */
+    #container {
+      overflow: hidden;
+      background: white;
+      padding: 60px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #left {
+      width: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    #right {
+      width: 55%;
+      margin: 0;
+    }
+    #right h2 {
+      font-family: Merriweather;
+      font-size: 2.5em;
+      color: #BB7654;
+      text-transform: uppercase;
+    }
+    #right p {
+      font-size: 1.60em;
+      line-height: 1.55em;
+      text-align: justify;
+      color: #3D292D;
+    }
+    #right p:first-letter {
+      float: left;
+      font-size: 2.8em;
+      margin-top: 0.27em;
+      margin-right: 0.15em;
+    }
+    #left #pic1 {
+      width: 35%;
+    }
+    @media (max-width: 768px) {
+      #left {
+        flex-direction: column;
+      }
+      #right {
+        width: 100%;
+        margin: 0;
+      }
+      #left #pic1 {
+        width: 50%;
+      }
+    }
+    #three_pics {
+      width: 100%;
+      margin-top: 50px;
+    }
+    #three_pics .pic {
+      width: 33%;
+      float: left;
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+    #three_pics .pic img {
+      transition: .5s ease;
+      height: 100%;
+    }
+    #three_pics .pic a {
+      display: block;
+      margin: 0 auto;
+      max-width: 250px;
+      width: 80%;
+      text-decoration: none;
+    }
+    #three_pics .pic .middle {
+      background-color: #865544;
+      color: white;
+      font-size: 25px;
+      padding: 20px 32px;
+      transition: .5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -0%);
+      -ms-transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    @media (max-width: 1200px) {
+      #three_pics .pic .middle {
+        font-size: 1.7vw;
+        padding: 2vw 2.5vw;
+      }
+    }
+    #three_pics .pic a:hover .middle {
+      opacity: 1;
+    }
+    #three_pics .pic a:hover img {
+      opacity: 0.6;
+      transition: .5s ease;
+      transform: scale(1.3);
+    }
+    .img-hover-zoom {
+      height: 250px;
+      max-width: 250px;
+      overflow: hidden;
+      border-radius: 5%;
+    }
+    #contact-form {
+      width: 60%;
+      margin: 50px auto 0 auto;
+    }
+    #contact-form h2 {
+      font-family: Merriweather;
+      text-align: center;
+      color: #BB7654;
+    }
+    #contact-form form .form-control {
+      font-family: OpenSans;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    #contact-form form .submit {
+      background-color: #865544;
+      color: white;
+      padding: 12px auto;
+      border: none;
+      cursor: pointer;
+      width: 20%;
+      border-radius: 5px;
+      transition: 0.5s ease;
+    }
+    @media (max-width: 1200px) {
+      #contact-form form .submit {
+        width: 120px;
+      }
+    }
+    #contact-form form .submit:hover {
+      background-color: #3D2920;
+      cursor: pointer;
+    }
+    #footer {
+      width: 90%;
+      background: #222;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 5%;
+    }
+    #footer p {
+      margin: 0;
+    }
+    @media (max-width: 800px) {
+      #footer {
+        font-size: 2vw;
+      }
+    }
+    #footer div {
+      letter-spacing: 1px;
+    }
+    #footer a {
+      color: white;
+      transition: 0.5s ease;
+      text-decoration: none;
+    }
+    #footer a:hover {
+      color: #E4B374;
+      cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- navigation start -->
+    <nav class="classinitial">
+      <div class="logo">
+        <h4>Westview PAWS</h4>
+      </div>
+      <ul class="nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="hours.html">Hours</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+        <div id="sidenav-overlay"></div>
+      </div>
+    </nav>
+    <div id="imgcontainer">
+      <div id="header">WESTVIEW PAWS</div>
+      <h2>Welcome to PAWS! Take a look around!</h2>
+      <a href="#contact-form"><button>Join PAWS! ↓</button></a>
+    </div>
+    <!-- navigation end -->
+    <div id="container">
+      <div id="left">
+        <div id="right">
+          <h2>About Us</h2>
+          <p>We are a club at Westview High School that focuses on <b>promoting animal welfare and safety</b>. We help different organizations in the area fundraise and plan projects for animals in need. Are you interested in joining? Fill out the form below.<br><br>Don't hesitate to get in contact with us - we don't bite! 🐶</p>
+        </div>
+        <img src="logoshaded.png" id="pic1">
+      </div>
+      <div id="three_pics">
+        <div class="pic">
+          <a href="about.html">
+            <div class="img-hover-zoom">
+              <img src="homepic2.jpg">
+            </div>
+            <div class="middle">a b o u t</div>
+          </a>
+        </div>
+        <div class="pic">
+          <a href="types.html">
+            <div class="img-hover-zoom">
+              <img src="homepic3.jpg">
+            </div>
+            <div class="middle">e v e n t s</div>
+          </a>
+        </div>
+        <div class="pic">
+          <a href="haiku.html">
+            <div class="img-hover-zoom">
+              <img src="homepic4.jpg">
+            </div>
+            <div class="middle">h o u r s</div>
+          </a>
+        </div>
+      </div>
+      <div id="contact-form">
+        <h2>Join PAWS!</h2>
+        <form onsubmit="setTimeout(cleareverything, 10);" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfl7IW7U7xqMdmdvbg-VE8rNXdWjfiJoKWxYXolz3plLPn0NQ/formResponse?embedded=true" target="_blank" method="POST" id="mG61Hd">
+          <input name="entry.1111631721" type="text" class="form-control" placeholder="Name (first and last)" required><br>
+          <input name="entry.561036712" type="email" class="form-control" placeholder="Email" required><br>
+          <input name="entry.427432208" type="number"  min="9" max="12" class="form-control" placeholder="Grade (number only!)" required><br>
+          <textarea name="entry.1998317372" class="form-control" placeholder="Questions? We look forward to seeing you!" rows="4"></textarea><br>
+          <input type="submit" class="form-control submit" value="SUBMIT">
+        </form>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Designed by Evelyn Chen</p>
+      <a href="#imgcontainer"><i class="fas fa-chevron-up"></i></a>
+      <div>
+        <a href="https://instagram.com/westviewpaws" target="_blank"><i class="fab fa-instagram"></i>&nbsp;westviewpaws</a>&nbsp;&nbsp;
+        <a href="mailto:westviewpaws@gmail.com" target="_blank"><i class="far fa-envelope"></i>&nbsp;westviewpaws@gmail.com</a>
+      </div>
+    </div>
+    <script>
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav');
+      const nav2 = document.querySelector('nav');
+      const logo = document.querySelector('.logo');
+      const navLinks = document.querySelectorAll('.nav li')
+
+      burger.addEventListener('click', () => {
+
+        //Toggle Nav
+        nav.classList.toggle('nav-active');
+        logo.classList.toggle('navactive');
+        nav2.classList.toggle('show');
+
+        //Animate Links
+        navLinks.forEach((link, index) => {
+          console.log(index);
+          if (link.style.animation) {
+            link.style.animation = ''
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.5}s`;
+          }
+        });
+
+        //Burger animation
+        burger.classList.toggle('toggle');
+      });
+    }
+
+    navSlide();
+    if ( window.history.replaceState ) {
+      window.history.replaceState( null, null, window.location.href );
+    }
+
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      document.body.classList.add("resize-animation-stopper");
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document.body.classList.remove("resize-animation-stopper");
+      }, 400);
+    });
+
+    function cleareverything() {
+      document.getElementById("mG61Hd").reset();
+    }
+    </script>
+    <script>
+        $(function () {
+            var header = $(".classinitial");
+            $(window).scroll(function () {
+                var scroll = $(window).scrollTop();
+
+                if (scroll >= 5) {
+                    header.removeClass('classinitial')
+                            .addClass("classfinal");
+                } else {
+                    header.removeClass("classfinal")
+                            .addClass('classinitial');
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
