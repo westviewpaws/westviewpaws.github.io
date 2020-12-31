@@ -331,9 +331,12 @@
       }, 400);
     });
 
-
-    function myFunction() {
-      alert("Thank you for signing up! You will receive meeting details shortly.");
+    if (scroll >= 5) {
+        header.removeClass('classinitial')
+                .addClass("classfinal");
+    } else {
+        header.removeClass("classfinal")
+                .addClass('classinitial');
     }
     </script>
     <script>
