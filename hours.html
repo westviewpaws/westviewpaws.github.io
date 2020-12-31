@@ -158,24 +158,14 @@
     } /* mobile end */
     #imgcontainer { /* banner container */
       background-image: linear-gradient(rgba(113, 62, 34, 0.5), rgba(71, 47, 31, 0.5)), url("hoursbanner.jpg");
-      background-position: center top;
-      background-size: 100% auto;
+      background-position: center center;
+      background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       overflow: hidden;
-      padding: 150px 10%;
+      padding: 150px 10% 130px 10%;
       font-family: OpenSans, sans-serif;
       text-align: center;
-    }
-    @media (min-width: 100px) {
-      #imgcontainer {
-        background-position: center 55%;
-      }
-    }
-    @media (max-width: 1050px) {
-      #imgcontainer {
-        background-size: cover;
-      }
     }
     #imgcontainer #header { /* title text */
       color: white;
@@ -206,8 +196,12 @@
       margin: 0 auto;
       overflow: hidden;
       background: white;
-      padding: 40px 20%;
+      padding: 40px 60px;
       text-align: center;
+    }
+    #container div {
+      max-width: 1000px;
+      margin: 0 auto;
     }
     #container iframe {
       width: 100%;
@@ -271,14 +265,16 @@
     </div>
     <!-- navigation end -->
     <div id="container">
-      <p><b>THERE IS NO CLUB FEE FOR THE 2020-2021 SCHOOL YEAR</b></p>
-      <p><s>Remember to pay your club fee of $15 to have your volunteer hours tracked.</s></p>
-      <p>It's a lot of work for our club leaders to keep track of every single person that comes to events! <s>If you do pay the fee,</s> you'll get your hours tracked and verified by us, and you can just easily print out your hours at the end of the year. While the fee isn't necessary to be in the club, you'll also get the PAWS t-shirt along with your volunteer hours being tracked.</p>
-      <p>If your hours are incorrect or you are unable to pay the fee due to financial issues, contact us and we'll be able to get you on the sheet or adjust your hours!</p>
-      <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTdsS7uq0SHpB9TuDB0289h51d6bH3wyNYkLekii9-rFUO-hg1CVtEyBrEUfxJAaNXSUqbAdV4UvzMt/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
-      <p>Previous years:</p>
-      <a href="https://docs.google.com/spreadsheets/d/1-4kDPmrODsnRC9mdEcFNL_CumikRXvRGnsQQ05dEi64/edit?usp=sharing"><p>2019-2020</p></a>
-      <a href="https://docs.google.com/spreadsheets/d/1_MD_Ixqfl3a4SeRPO5gJSRqhWSJQO4S797LsaxdXKoA/edit?usp=sharing"><p>2018-2019</p></a>
+      <div>
+        <p><b>THERE IS NO CLUB FEE FOR THE 2020-2021 SCHOOL YEAR</b></p>
+        <p><s>Remember to pay your club fee of $15 to have your volunteer hours tracked.</s></p>
+        <p>It's a lot of work for our club leaders to keep track of every single person that comes to events! <s>If you do pay the fee,</s> you'll get your hours tracked and verified by us, and you can just easily print out your hours at the end of the year. While the fee isn't necessary to be in the club, you'll also get the PAWS t-shirt along with your volunteer hours being tracked.</p>
+        <p>If your hours are incorrect or you are unable to pay the fee due to financial issues, contact us and we'll be able to get you on the sheet or adjust your hours!</p>
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTdsS7uq0SHpB9TuDB0289h51d6bH3wyNYkLekii9-rFUO-hg1CVtEyBrEUfxJAaNXSUqbAdV4UvzMt/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
+        <p>Previous years:</p>
+        <a href="https://docs.google.com/spreadsheets/d/1-4kDPmrODsnRC9mdEcFNL_CumikRXvRGnsQQ05dEi64/edit?usp=sharing"><p>2019-2020</p></a>
+        <a href="https://docs.google.com/spreadsheets/d/1_MD_Ixqfl3a4SeRPO5gJSRqhWSJQO4S797LsaxdXKoA/edit?usp=sharing"><p>2018-2019</p></a>
+      </div>
     </div>
     <div id="footer">
       <p>Thank you for visiting!&nbsp;&nbsp;<i class="fas fa-paw"></i></p>
