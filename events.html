@@ -207,6 +207,12 @@
       }
     }
     /* navigation end */
+    #formcontainer {
+      width: 100%;
+      background: white;
+      margin: 0;
+      padding-bottom: 60px;
+    }
     #container {
       margin: 0 auto;
       overflow: hidden;
@@ -345,7 +351,6 @@
       background-color: #E4B374;
     }
     #footer {
-      margin-top: 60px;
       width: 90%;
       background: #222;
       color: white;
@@ -399,46 +404,48 @@
       <h2>Cool volunteer things we're doing. You can submit an idea here as well!</h2>
     </div>
     <!-- navigation end -->
-    <div id="container">
-      <div id="main">
-        <h2>We're always looking for new events to plan!</h2>
-        <div>
-          <p>Got a sick idea? You can make it happen! The club is constantly coming up with new things to do, and we want to hear your ideas!</p>
-          <img src="events1.png" class="pic1">
+    <div id="formcontainer">
+      <div id="container">
+        <div id="main">
+          <h2>We're always looking for new events to plan!</h2>
+          <div>
+            <p>Got a sick idea? You can make it happen! The club is constantly coming up with new things to do, and we want to hear your ideas!</p>
+            <img src="events1.png" class="pic1">
+          </div>
+          <div id="bottomdiv">
+            <img src="events2.jpg" class="pic2">
+            <p>Some previous events we've gone to are jewelry sales organized by shelters and dog washes! We've also made blankets, dog treats, cat scratchers, and sandwich boards for various organizations! </p>
+          </div>
         </div>
-        <div id="bottomdiv">
-          <img src="events2.jpg" class="pic2">
-          <p>Some previous events we've gone to are jewelry sales organized by shelters and dog washes! We've also made blankets, dog treats, cat scratchers, and sandwich boards for various organizations! </p>
+        <div id="right_side">
+          <h3>Ongoing Events</h3>
+          <ul>
+            <li><a href="https://docs.google.com/document/d/1V9nS3JFQiDCWjGWhF7YktCNXfVyD5EJIZf6YlCIXJcQ/edit?usp=sharing" target="_blank">Indigo Rescue Instagram</a></li>
+            <li><a href="https://docs.google.com/document/d/1INmhljHsiKeR-E-ShRyDOmuxI_GjnZc0HqQEtu6PlC4/edit?usp=sharing" target="_blank">Indigo Rescue Posters</a></li>
+            <li><a href="https://docs.google.com/document/d/1gGFhhr_4VKnAsJZCACMyqH4LsTI6Yi3AL9SMV-0R85M/edit?usp=sharing" target="_blank">Westview PAWS Instagram</a></li>
+            <li><a href="https://docs.google.com/document/d/1zvjhxBQbl575LtcVu8BPpdkO2hiter4JomqdiCmEp_Q/edit?usp=sharing" target="_blank">RedBubble Stickers</a></li>
+          </ul>
         </div>
       </div>
-      <div id="right_side">
-        <h3>Ongoing Events</h3>
-        <ul>
-          <li><a href="https://docs.google.com/document/d/1V9nS3JFQiDCWjGWhF7YktCNXfVyD5EJIZf6YlCIXJcQ/edit?usp=sharing" target="_blank">Indigo Rescue Instagram</a></li>
-          <li><a href="https://docs.google.com/document/d/1INmhljHsiKeR-E-ShRyDOmuxI_GjnZc0HqQEtu6PlC4/edit?usp=sharing" target="_blank">Indigo Rescue Posters</a></li>
-          <li><a href="https://docs.google.com/document/d/1gGFhhr_4VKnAsJZCACMyqH4LsTI6Yi3AL9SMV-0R85M/edit?usp=sharing" target="_blank">Westview PAWS Instagram</a></li>
-          <li><a href="https://docs.google.com/document/d/1zvjhxBQbl575LtcVu8BPpdkO2hiter4JomqdiCmEp_Q/edit?usp=sharing" target="_blank">RedBubble Stickers</a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="formdiv">
-      <h4>Submit an Idea</h4>
-      <p> We want to hear your next big idea! Please don't overuse this, and please put some thought into your ideas before submitting them! There are a lot of things we could possibly do, but many just aren't feasible for the club to actually do. Some ideas could be possible volunteering events, activities we could do as a club,  or items we could make for shelters. Thank you! :)</P>
-      <form onsubmit="setTimeout(cleareverything, 10);" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScqJ9Hh2xYILLWdfYW7mzBq_kpyxx9qHOPUodTA2KKWKdCjDw/formResponse?embedded=true" target="_blank" method="POST" id="mG61Hd">
-        <label>Basic Info</label>
-        <input name="entry.2054235815" type="text" class="form-control" placeholder="What is your name, grade, and email?" required><br>
-        <label>Project Idea</label>
-        <textarea name="entry.1893726800" class="form-control" placeholder="What is your idea? Feel free to make the answer as long or short as you want, so long as we can tell what you mean." rows="4" required></textarea><br>
-        <label>Estimated Project Cost</label>
-        <input name="entry.334683777" type="text" class="form-control" placeholder="What is the estimated cost of your idea?" required><br>
-        <label>Details</label>
-        <textarea name="entry.108056931" class="form-control" placeholder="Tell us about your idea! Where will it be held, and what time will it take place? Is there a specific day this must be held?" rows="4" required></textarea><br>
-        <label>Pandemic Accommodations</label>
-        <textarea name="entry.2055637839" class="form-control" placeholder="How does this account for the pandemic? If there are issues that arise due to necessary in-person contact, list that here and we can try to work it out!" rows="4" required></textarea><br>
-        <label>Other</label>
-        <textarea name="entry.418256593"class="form-control" placeholder="If there's any additional information you have that needs to be said, write it here! Don't be shy, we would rather you say this here than only in person!" rows="4"></textarea><br>
-        <input type="submit" class="form-control submit" value="SUBMIT">
-      </form>
+      <div id="formdiv">
+        <h4>Submit an Idea</h4>
+        <p> We want to hear your next big idea! Please don't overuse this, and please put some thought into your ideas before submitting them! There are a lot of things we could possibly do, but many just aren't feasible for the club to actually do. Some ideas could be possible volunteering events, activities we could do as a club,  or items we could make for shelters. Thank you! :)</P>
+          <form onsubmit="setTimeout(cleareverything, 10);" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScqJ9Hh2xYILLWdfYW7mzBq_kpyxx9qHOPUodTA2KKWKdCjDw/formResponse?embedded=true" target="_blank" method="POST" id="mG61Hd">
+            <label>Basic Info</label>
+            <input name="entry.2054235815" type="text" class="form-control" placeholder="What is your name, grade, and email?" required><br>
+            <label>Project Idea</label>
+            <textarea name="entry.1893726800" class="form-control" placeholder="What is your idea? Feel free to make the answer as long or short as you want, so long as we can tell what you mean." rows="4" required></textarea><br>
+            <label>Estimated Project Cost</label>
+            <input name="entry.334683777" type="text" class="form-control" placeholder="What is the estimated cost of your idea?" required><br>
+            <label>Details</label>
+            <textarea name="entry.108056931" class="form-control" placeholder="Tell us about your idea! Where will it be held, and what time will it take place? Is there a specific day this must be held?" rows="4" required></textarea><br>
+            <label>Pandemic Accommodations</label>
+            <textarea name="entry.2055637839" class="form-control" placeholder="How does this account for the pandemic? If there are issues that arise due to necessary in-person contact, list that here and we can try to work it out!" rows="4" required></textarea><br>
+            <label>Other</label>
+            <textarea name="entry.418256593"class="form-control" placeholder="If there's any additional information you have that needs to be said, write it here! Don't be shy, we would rather you say this here than only in person!" rows="4"></textarea><br>
+            <input type="submit" class="form-control submit" value="SUBMIT">
+          </form>
+        </div>
     </div>
     <div id="footer">
       <p>Thank you for visiting!&nbsp;&nbsp;<i class="fas fa-paw"></i></p>
