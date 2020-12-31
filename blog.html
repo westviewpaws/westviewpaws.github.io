@@ -454,6 +454,14 @@
         }
       });
     }
+
+    if (scroll >= 5) {
+        header.removeClass('classinitial')
+                .addClass("classfinal");
+    } else {
+        header.removeClass("classfinal")
+                .addClass('classinitial');
+    }
     </script>
     <script>
         $(function () {
