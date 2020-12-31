@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="logoshaded.PNG" alt="PAWS Logo" width="400"/></div>
+<p align="center"><img src="logoshaded.PNG" alt="PAWS Logo" width="400"/></p>
   <a href="https://metroui.org.ua/v4/">
     <img src="https://sandbox.org.ua/Views/images/logo.png" alt="">
   </a>
