@@ -158,24 +158,14 @@
     } /* mobile end */
     #imgcontainer { /* banner container */
       background-image: linear-gradient(rgba(113, 62, 34, 0.5), rgba(71, 47, 31, 0.5)), url("submitanideabanner.jpg");
-      background-position: center top;
-      background-size: 100% auto;
+      background-position: center center;
+      background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       overflow: hidden;
-      padding: 150px 10%;
+      padding: 150px 10% 130px 10%;
       font-family: OpenSans, sans-serif;
       text-align: center;
-    }
-    @media (min-width: 100px) {
-      #imgcontainer {
-        background-position: center 35%;
-      }
-    }
-    @media (max-width: 1050px) {
-      #imgcontainer {
-        background-size: cover;
-      }
     }
     #imgcontainer #header { /* title text */
       color: white;
@@ -219,10 +209,16 @@
       justify-content: space-between;
       align-items: center;
     }
-    @media (max-width: 768px) {
-      #main div {
-        flex-direction: column;
+    @media (max-width: 1200px) {
+      #main #bottomdiv {
+        flex-direction: column-reverse;
       }
+      #main .pic2 {
+        margin-top: 20px;
+        width: 100%
+      }
+    }
+    @media (max-width: 768px) {
       #main .pic1 {
         display: none;
       }
@@ -328,6 +324,7 @@
       border-radius: 4px;
       cursor: pointer;
       transition: 0.5s ease;
+      -webkit-appearance: none;
     }
     input[type=submit]:hover {
       background-color: #E4B374;
@@ -394,7 +391,7 @@
           <p>Got a sick idea? You can make it happen! The club is constantly coming up with new things to do, and we want to hear your ideas!</p>
           <img src="events1.png" class="pic1">
         </div>
-        <div>
+        <div id="bottomdiv">
           <img src="events2.jpg" class="pic2">
           <p>Some previous events we've gone to are jewelry sales organized by shelters and dog washes! We've also made blankets, dog treats, cat scratchers, and sandwich boards for various organizations! </p>
         </div>
